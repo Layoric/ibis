@@ -102,8 +102,9 @@ fn test_spoilers() {
     let output = render_article_markdown(input);
     
     // Check for spoiler structure
-    assert!(output.contains(r#"<div class="spoiler">"#));
-    assert!(output.contains("spoiler"));
+    assert!(output.contains(r#"<div class="spoiler-block">"#));
+    assert!(output.contains(r#"<div class="spoiler-title">spoiler</div>"#));
+    assert!(output.contains(r#"<div class="spoiler-content">"#));
     assert!(output.contains("Hidden content"));
 }
 
