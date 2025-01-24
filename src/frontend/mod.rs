@@ -2,8 +2,8 @@ use crate::common::article::DbArticle;
 
 pub mod api;
 pub mod app;
+pub mod markdown;
 mod components;
-mod markdown;
 mod pages;
 mod utils;
 
