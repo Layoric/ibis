@@ -1,13 +1,13 @@
 #![expect(clippy::unwrap_used)]
 
-use ibis::frontend::markdown::{render_article_markdown, render_comment_markdown};
+use ibis::frontend::markdown;
 use pretty_assertions::assert_eq;
 
 #[test]
 fn test_basic_markdown() {
     let input = "# Heading 1\n## Heading 2\n\nParagraph with **bold** and *italic* text.";
     let expected = "<h2>Heading 1</h2>\n<h3>Heading 2</h3>\n<p>Paragraph with <strong>bold</strong> and <em>italic</em> text.</p>\n";
-    assert_eq!(render_article_markdown(input), expected);
+    assert_eq!(markdown::render_article_markdown(input), expected);
 }
 
 #[test]
@@ -49,7 +49,7 @@ fn test_math_equations() {
 fn test_comment_markdown() {
     let input = "**Bold** and *italic* in comments";
     let expected = "<p><strong>Bold</strong> and <em>italic</em> in comments</p>\n";
-    assert_eq!(render_comment_markdown(input), expected);
+    assert_eq!(markdown::render_comment_markdown(input), expected);
 }
 
 #[test]
