@@ -13,7 +13,7 @@ pub mod article_link;
 pub mod math_equation;
 pub mod table_of_contents;
 
-pub(crate) fn render_article_markdown(text: &str) -> String {
+fn render_article_markdown(text: &str) -> String {
     static INSTANCE: OnceLock<MarkdownIt> = OnceLock::new();
     let mut parsed = INSTANCE.get_or_init(article_markdown).parse(text);
 
@@ -30,7 +30,7 @@ pub(crate) fn render_article_markdown(text: &str) -> String {
     parsed.render()
 }
 
-pub(crate) fn render_comment_markdown(text: &str) -> String {
+fn render_comment_markdown(text: &str) -> String {
     static INSTANCE: OnceLock<MarkdownIt> = OnceLock::new();
     INSTANCE.get_or_init(common_markdown).parse(text).render()
 }
