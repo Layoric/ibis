@@ -1,6 +1,6 @@
 #![expect(clippy::unwrap_used)]
 
-use ibis::frontend::markdown;
+use ibis::frontend::markdown::{render_article_markdown, render_comment_markdown};
 use pretty_assertions::assert_eq;
 
 #[test]
@@ -21,7 +21,7 @@ fn test_links() {
 fn test_lists() {
     let input = "- Item 1\n- Item 2\n  1. Subitem";
     let expected = "<ul>\n<li>Item 1</li>\n<li>Item 2\n<ol>\n<li>Subitem</li>\n</ol>\n</li>\n</ul>\n";
-    assert_eq!(render_article_markdown(input), expected);
+    assert_eq!(markdown::render_article_markdown(input), expected);
 }
 
 #[test]
@@ -58,7 +58,7 @@ fn test_table_of_contents() {
 # Heading 1
 ## Subheading
 # Heading 2"#;
-    let rendered = render_article_markdown(input);
+    let rendered = markdown::render_article_markdown(input);
     assert!(rendered.contains("Table of Contents"));
     assert!(rendered.contains("Heading 1"));
     assert!(rendered.contains("Subheading"));
