@@ -1,6 +1,6 @@
 #![expect(clippy::unwrap_used)]
 
-use ibis::frontend::markdown;
+use ibis::frontend::markdown::{render_article_markdown, render_comment_markdown};
 use pretty_assertions::assert_eq;
 
 #[test]
