@@ -2,6 +2,7 @@
 
 use ibis::frontend::markdown;
 use pretty_assertions::assert_eq;
+use ibis::frontend::markdown::render_article_markdown;
 
 #[test]
 fn test_basic_markdown() {
@@ -35,7 +36,7 @@ fn test_code() {
 fn test_tables() {
     let input = "| Header 1 | Header 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |";
     let expected = "<table>\n<thead>\n<tr>\n<th>Header 1</th>\n<th>Header 2</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Cell 1</td>\n<td>Cell 2</td>\n</tr>\n</tbody>\n</table>\n";
-    assert_eq!(render_article_markdown(input), expected);
+    assert_eq!(markdown::render_article_markdown(input), expected);
 }
 
 #[test]
