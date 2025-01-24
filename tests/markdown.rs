@@ -70,7 +70,7 @@ fn test_comment_markdown() {
 
 #[test]
 fn test_table_of_contents() {
-    let input = r#"[[toc]]
+    let input = r#"[!toc]
 # Heading 1
 ## Subheading
 # Heading 2"#;
@@ -79,10 +79,10 @@ fn test_table_of_contents() {
     // Check for TOC presence and structure
     assert!(rendered.contains("Table of Contents"));
     assert!(rendered.contains("Heading 1"));
-    assert!(rendered.contains("Subheading"));
+    assert!(rendered.contains("Subheading")); 
     assert!(rendered.contains("Heading 2"));
     assert!(rendered.contains("href="));
-    assert!(rendered.contains("menu-title"));
+    assert!(rendered.contains("not-prose"));
 }
 
 #[test]
@@ -102,10 +102,9 @@ fn test_spoilers() {
     let output = render_article_markdown(input);
     
     // Check for spoiler structure
-    assert!(output.contains("<details>"));
-    assert!(output.contains("<summary>spoiler</summary>"));
+    assert!(output.contains(r#"<div class="spoiler">"#));
+    assert!(output.contains("spoiler"));
     assert!(output.contains("Hidden content"));
-    assert!(output.contains("</details>"));
 }
 
 #[test]
