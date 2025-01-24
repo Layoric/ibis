@@ -1,6 +1,6 @@
 #![expect(clippy::unwrap_used)]
 
-use ibis::frontend::markdown::{render_article_markdown, render_comment_markdown};
+use ibis::frontend::markdown;
 use pretty_assertions::assert_eq;
 
 #[test]
@@ -14,7 +14,7 @@ fn test_basic_markdown() {
 fn test_links() {
     let input = "[Example](https://example.com)";
     let expected = "<p><a href=\"https://example.com\">Example</a></p>\n";
-    assert_eq!(render_article_markdown(input), expected);
+    assert_eq!(markdown::render_article_markdown(input), expected);
 }
 
 #[test]
