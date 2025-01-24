@@ -1,6 +1,6 @@
 #![expect(clippy::unwrap_used)]
 
-use ibis::frontend::markdown::{render_article_markdown, render_comment_markdown};
+use ibis::frontend::markdown;
 use pretty_assertions::assert_eq;
 
 #[test]
@@ -28,7 +28,7 @@ fn test_lists() {
 fn test_code() {
     let input = "Inline `code` and\n```\nblock code\n```";
     let expected = "<p>Inline <code>code</code> and</p>\n<pre><code>block code\n</code></pre>\n";
-    assert_eq!(render_article_markdown(input), expected);
+    assert_eq!(markdown::render_article_markdown(input), expected);
 }
 
 #[test]
