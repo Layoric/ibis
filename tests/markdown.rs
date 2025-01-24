@@ -1,7 +1,7 @@
 #![expect(clippy::unwrap_used)]
 
-use ibis::frontend::markdown;
 use pretty_assertions::assert_eq;
+use ibis::frontend::markdown;
 use ibis::frontend::markdown::render_article_markdown;
 
 #[test]
